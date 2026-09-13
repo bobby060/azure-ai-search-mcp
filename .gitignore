@@ -5,3 +5,9 @@
 .venv/
 *.pyc
 __pycache__
+.ruff_cache/
+
+# Security artifacts
+*.zst
+*sbom.json
+*vex.json

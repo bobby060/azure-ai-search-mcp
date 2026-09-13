@@ -59,7 +59,7 @@ async def make_nws_request(url: str) -> dict[str, Any] | None:
             response = await client.get(url, headers=headers, timeout=30.0)
             response.raise_for_status()
             return response.json()
-        except Exception:
+        except (ValueError, OSError):
             return None
 
 
@@ -87,7 +87,8 @@ async def get_alerts(state: str) -> Alerts:
                 area=props.get("areaDesc") or "Unknown",
                 severity=props.get("severity") or "Unknown",
                 description=props.get("description") or "No description available",
-                instructions=props.get("instruction") or "No specific instructions provided",
+                instructions=props.get("instruction")
+                or "No specific instructions provided",
             )
             for props in (feature["properties"] for feature in data["features"])
         ]

@@ -1,0 +1,10 @@
+services:
+    mcp:
+        build: server
+        image: weather-mcp:latest
+        ports:
+            -  "${SERVER_HOST_PORT}:${SERVER_HOST_PORT}"
+        environment:
+            - .env
+            
+                
