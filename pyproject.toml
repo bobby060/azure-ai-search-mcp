@@ -1,0 +1,18 @@
+[project]
+name = "weather-mcp"
+version = "0.1.0"
+description = "A fast MCP server example"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastmcp>=2.0.0",
+    "mcp[cli]>=2.0.0",
+    "pydantic>=2.0.0",
+]
+
+[project.scripts]
+start-mcp = "weather_mcp.weather:main"
+
+[build-system]
+requires = ["uv_build"]
+build-backend = "uv_build"
